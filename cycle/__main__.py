@@ -1,8 +1,13 @@
 import constants
 
 from game.casting.cast import Cast
+from game.casting.food import Food
+from game.casting.score import Score
+from game.casting.player1 import Player1
+from game.casting.player2 import Player2
 from game.scripting.script import Script
-from game.scripting.control_actors_action import ControlActorsAction
+from game.scripting.control_player1_action import ControlActorsAction
+from game.scripting.control_player2_action import ControlActorsAction
 from game.scripting.move_actors_action import MoveActorsAction
 from game.scripting.handle_collisions_action import HandleCollisionsAction
 from game.scripting.draw_actors_action import DrawActorsAction
@@ -14,10 +19,14 @@ from game.shared.point import Point
 
 
 def main():
-
+    
     # create the cast
     cast = Cast()
-
+    cast.add_actor("foods", Food())
+    cast.add_actor("trails", Player1())
+    cast.add_actor("trails", Player2())
+    cast.add_actor("scores", Score())
+   
     # start the game
     keyboard_service = KeyboardService()
     video_service = VideoService()
@@ -27,7 +36,7 @@ def main():
     script.add_action("update", MoveActorsAction())
     script.add_action("update", HandleCollisionsAction())
     script.add_action("output", DrawActorsAction(video_service))
-
+    
     director = Director(video_service)
     director.start_game(cast, script)
 
