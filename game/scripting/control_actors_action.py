@@ -5,9 +5,9 @@ from game.shared.point import Point
 
 class ControlActorsAction(Action):
     """
-    An input action that controls the snake.
+    An input action that controls the trail.
     
-    The responsibility of ControlActorsAction is to get the direction and move the snake's head.
+    The responsibility of ControlActorsAction is to get the direction and move the trail's head.
 
     Attributes:
         _keyboard_service (KeyboardService): An instance of KeyboardService.
@@ -30,20 +30,20 @@ class ControlActorsAction(Action):
             script (Script): The script of Actions in the game.
         """
         # left
-        if self._keyboard_service.is_key_down('j'):
+        if self._keyboard_service.is_key_down('a'):
             self._direction = Point(-constants.CELL_SIZE, 0)
         
         # right
-        if self._keyboard_service.is_key_down('l'):
+        if self._keyboard_service.is_key_down('d'):
             self._direction = Point(constants.CELL_SIZE, 0)
         
         # up
-        if self._keyboard_service.is_key_down('i'):
+        if self._keyboard_service.is_key_down('w'):
             self._direction = Point(0, -constants.CELL_SIZE)
         
         # down
-        if self._keyboard_service.is_key_down('k'):
+        if self._keyboard_service.is_key_down('s'):
             self._direction = Point(0, constants.CELL_SIZE)
         
-        trail = cast.get_second_actor("trails")
+        trail = cast.get_first_actor("trails")
         trail.turn_head(self._direction)

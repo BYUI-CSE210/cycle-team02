@@ -1,17 +1,14 @@
 import constants
-
-from random import randint
 from game.casting.actor import Actor
 from game.scripting.action import Action
 from game.shared.point import Point
-from game.casting.food import Food
 
 class HandleCollisionsAction(Action):
     """
     An update action that handles interactions between the actors.
     
-    The responsibility of HandleCollisionsAction is to handle the situation when the snake collides
-    with the food, or the snake collides with its segments, or the game is over.
+    The responsibility of HandleCollisionsAction is to handle the situation when the trail collides
+    with the food, or the trail collides with its segments, or the game is over.
 
     Attributes:
         _is_game_over (boolean): Whether or not the game is over.
@@ -34,64 +31,45 @@ class HandleCollisionsAction(Action):
             self._handle_game_over(cast)
 
     def _handle_food_collision(self, cast):
-        """Updates the score and moves the food if the snake collides with the food.
+        """Updates the score nd moves the food if the trail collides with the food.
         
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        score_player1 = cast.get_first_actor("scores")
-        score_player2 = cast.get_second_actor("scores")
-        
-        food = Food()
-        
-        trail1 = cast.get_first_actor("trails")
-        head = trail1.get_head()
-        
-        trail2 = cast.get_second_actor("trails")
-        head = trail2.get_head()
+        score = cast.get_first_actor("scores")
+        food = cast.get_first_actor("foods")
+        trail = cast.get_first_actor("trails")
+        head = trail.get_cycle()
 
-        if head.get_position().equals(food.get_points()):
+        if head.get_position().equals(food.get_position()):
             points = food.get_points()
-            
-            trail1.grow_tail(points)
-            trail2.grow_tail(points)
-            
-            score_player1.add_points(points)
-            score_player2.add_points(points)
-            
+            trail.grow_tail(points)
+            score.add_points(points)
             food.reset()
     
     def _handle_segment_collision(self, cast):
-        """Sets the game over flag if the snake collides with one of its segments.
+        """Sets the game over flag if the trail collides with one of its segments.
         
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        trail1 = cast.get_first_actor("trails")
-        head = trail1.get_segments()[0]
-        segments1 = trail1.get_segments()[1:]
-
-        trail2 = cast.get_second_actor("trails")
-        head = trail2.get_segments()[0]
-        segments2 = trail2.get_segments()[1:]
+        trail = cast.get_first_actor("trails")
+        head = trail.get_segments()[0]
+        segments = trail.get_segments()[1:]
         
-        for segment1 in segments1:
-            if head.get_position().equals(segment2.get_position()):
-                self._is_game_over = True
-
-        for segment2 in segments2:
-            if head.get_position().equals(segment1.get_position()):
+        for segment in segments:
+            if head.get_position().equals(segment.get_position()):
                 self._is_game_over = True
         
     def _handle_game_over(self, cast):
-        """Shows the 'game over' message and turns the snake and food white if the game is over.
+        """Shows the 'game over' message and turns the trail and food white if the game is over.
         
         Args:
             cast (Cast): The cast of Actors in the game.
         """
         if self._is_game_over:
-            trail1 = cast.get_actor("trails")
-            segments = trail1.get_segments()
+            trail = cast.get_first_actor("trails")
+            segments = trail.get_segments()
             food = cast.get_first_actor("foods")
 
             x = int(constants.MAX_X / 2)

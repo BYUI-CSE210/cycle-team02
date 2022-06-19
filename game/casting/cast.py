@@ -51,33 +51,17 @@ class Cast:
         return results
 
     def get_first_actor(self, group):
-        """Gets any actor in a given group.
+        """Gets the first actor in the given group.
         
         Args:
             group (string): The name of the group.
-            index (integer): The index of the actor in the given group. 
             
         Returns:
-            List: The second actor in the group.
+            List: The first actor in the group.
         """
         result = None
         if group in self._actors.keys():
             result = self._actors[group][0]
-        return result
-
-    def get_second_actor(self, group):
-        """Gets any actor in a given group.
-        
-        Args:
-            group (string): The name of the group.
-            index (integer): The index of the actor in the given group. 
-            
-        Returns:
-            List: The second actor in the group.
-        """
-        result = None
-        if group in self._actors.keys():
-            result = self._actors[group][-1]
         return result
 
     def remove_actor(self, group, actor):
