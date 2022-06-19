@@ -3,7 +3,8 @@
 from game.casting.cast import Cast
 from game.casting.food import Food
 from game.casting.score import Score
-from game.casting.trail import Trail
+from game.casting.trail1 import Trail_1
+from game.casting.trail2 import Trail_2
 from game.scripting.script import Script
 from game.scripting.control_actors_action import ControlActorsAction
 from game.scripting.move_actors_action import MoveActorsAction
@@ -21,7 +22,8 @@ def main():
     # create the cast
     cast = Cast()
     cast.add_actor("foods", Food())
-    cast.add_actor("trails", Trail())
+    cast.add_actor("trails", Trail_1())
+    cast.add_actor("trails", Trail_2())
     cast.add_actor("scores", Score())
    
     # start the game

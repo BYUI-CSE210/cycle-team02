@@ -3,7 +3,7 @@ from game.casting.actor import Actor
 from game.shared.point import Point
 
 
-class Trail(Actor):
+class Trail_1(Actor):
     """
     A long trail drawn by a cycle.
     
@@ -30,6 +30,7 @@ class Trail(Actor):
             previous = self._segments[i - 1]
             velocity = previous.get_velocity()
             trailing.set_velocity(velocity)
+
 
     def get_cycle(self):
         return self._segments[0]
@@ -59,7 +60,7 @@ class Trail(Actor):
             position = Point(x - i * constants.CELL_SIZE, y)
             velocity = Point(1 * constants.CELL_SIZE, 0)
             text = "8" if i == 0 else "#"
-            color = constants.YELLOW if i == 0 else constants.GREEN
+            color = constants.RED if i == 0 else constants.GREEN
             
             segment = Actor()
             segment.set_position(position)

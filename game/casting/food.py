@@ -6,7 +6,7 @@ from game.shared.point import Point
 
 class Food(Actor):
     """
-    A tasty item that snakes like to eat.
+    A tasty item that cycles like to override.
     
     The responsibility of Food is to select a random position and points that it's worth.
 
@@ -18,7 +18,7 @@ class Food(Actor):
         super().__init__()
         self._points = 0
         self.set_text("@")
-        self.set_color(constants.YELLOW)
+        self.set_color(constants.RED)
         self.reset()
         
     def reset(self):
