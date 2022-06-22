@@ -47,10 +47,17 @@ root                    (project root folder)
 ---
 * Python 3.8.0
 * Raylib Python CFFI 3.7
+* Modules -- pygame, sys
+
+
+## Controls 
+--- 
+* Arrow Keys for Player 2 (Yellow) 
+* WASD Keys for Player 1 (Red)
 
 ## Authors
 ---
 * Baron Tshibasu (nrb2002)
-* TODO: Add your name and email here
+
 
 
