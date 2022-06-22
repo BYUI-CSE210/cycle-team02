@@ -46,7 +46,6 @@ root                    (project root folder)
 ## Required Technologies
 ---
 * Python 3.8.0
-* Raylib Python CFFI 3.7
 * Modules -- pygame, sys
 
 
