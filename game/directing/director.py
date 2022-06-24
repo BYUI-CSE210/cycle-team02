@@ -1,10 +1,8 @@
 import pygame
 from pygame.locals import *
-from pygame import mixer
-import sys
 import constants
-from trail import Trail
-from handle_collision_action import HandleCollisionsAction
+from game.casting.trail import Trail
+from game.scripting.handle_collision_action import HandleCollisionsAction
 
 
 

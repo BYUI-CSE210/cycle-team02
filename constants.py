@@ -4,8 +4,8 @@ pygame.init()
 
 # Constants
 # =====================================================================
-width = 900
-height = 600
+width = 1200
+height = 800
 display = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Cycle Game")
 clock = pygame.time.Clock()

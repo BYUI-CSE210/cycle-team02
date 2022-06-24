@@ -26,10 +26,10 @@ class HandleCollisionsAction:
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    self.close_window()
+                    self.close()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_q:
-                        self.close_window()
+                        self.close()
                     if event.key == pygame.K_r:
                         #main()
                         pass
@@ -49,7 +49,7 @@ class HandleCollisionsAction:
             pygame.draw.line(constants.display, constants.lightpink, (i*squares, 0), (i*squares, constants.height))
             pygame.draw.line(constants.display, constants.lightpink, (0, i*squares), (constants.width, i*squares))
 
-    def close_window(self):
+    def close(self):
         pygame.quit()
         sys.exit()
 

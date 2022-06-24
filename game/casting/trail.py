@@ -1,8 +1,7 @@
 
 import pygame
-import sys
 import constants
-from handle_collision_action import HandleCollisionsAction
+from game.scripting.handle_collision_action import HandleCollisionsAction
 
 
 pygame.init()
