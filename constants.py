@@ -22,7 +22,7 @@ green = (0, 255, 0)
 seablue = (0, 220, 255)
 lightpink = (255, 100, 255)
 
-font = pygame.font.SysFont("Helvetica", 65)
+font = pygame.font.SysFont("Helvetica", 40)
 
 w = 10
 # =====================================================================
