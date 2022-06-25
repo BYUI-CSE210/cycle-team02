@@ -22,7 +22,7 @@ class HandleCollisionsAction:
         """Constructs a new HandleCollisionsAction."""
         #self._is_game_over = False
 
-    def gameOver(self, number):
+    def game_over(self, number):
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
