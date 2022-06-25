@@ -18,6 +18,7 @@ mixer.init()
 def main():
     video_service = VideoService()
     director = Director()
+    director.start_game()
 
 
 

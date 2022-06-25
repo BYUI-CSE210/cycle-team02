@@ -15,12 +15,12 @@ class HandleCollisionsAction:
     with the food, or the trail collides with its segments, or the game is over.
 
     Attributes:
-        _is_game_over (boolean): Whether or not the game is over.
+        _is_end_game (boolean): Whether or not the game is over.
     """
 
     def __init__(self):
         """Constructs a new HandleCollisionsAction."""
-        #self._is_game_over = False
+        #self._is_end_game = False
 
     def execute(self):
         squares = 100 
@@ -28,7 +28,7 @@ class HandleCollisionsAction:
             pygame.draw.line(constants.display, constants.lightpink, (i*squares, 0), (i*squares, constants.height))
             pygame.draw.line(constants.display, constants.lightpink, (0, i*squares), (constants.width, i*squares))
 
-    def game_over(self, number):
+    def end_game(self, number):
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
