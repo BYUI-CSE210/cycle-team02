@@ -22,14 +22,20 @@ class HandleCollisionsAction:
         """Constructs a new HandleCollisionsAction."""
         #self._is_game_over = False
 
+    def execute(self):
+        squares = 100 
+        for i in range(int(constants.width/squares)):
+            pygame.draw.line(constants.display, constants.lightpink, (i*squares, 0), (i*squares, constants.height))
+            pygame.draw.line(constants.display, constants.lightpink, (0, i*squares), (constants.width, i*squares))
+
     def game_over(self, number):
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    self.close()
+                    self.close_window()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_q:
-                        self.close()
+                        self.close_window()
                     if event.key == pygame.K_r:
                         #main()
                         pass
@@ -43,13 +49,7 @@ class HandleCollisionsAction:
             pygame.display.update()
             constants.clock.tick(60)
 
-    def drawGrid(self):
-        squares = 100 
-        for i in range(int(constants.width/squares)):
-            pygame.draw.line(constants.display, constants.lightpink, (i*squares, 0), (i*squares, constants.height))
-            pygame.draw.line(constants.display, constants.lightpink, (0, i*squares), (constants.width, i*squares))
-
-    def close(self):
+    def close_window(self):
         pygame.quit()
         sys.exit()
 

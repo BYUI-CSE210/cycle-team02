@@ -76,7 +76,7 @@ class Director:
                     
                 
             constants.display.fill(constants.background)
-            collision.drawGrid()
+            collision.execute()
             cycle1.draw()
             cycle2.draw()
 
