@@ -2,7 +2,7 @@ import pygame
 from pygame.locals import *
 import constants
 from game.casting.trail import Trail
-from game.scripting.handle_collision_action import HandleCollisionsAction
+from game.services.video_service import VideoService
 
 
 
@@ -32,16 +32,16 @@ class Director:
         self.x2 = -1
         self.y2 = 0
 
-        self.collision = HandleCollisionsAction()
+        self.video = VideoService()
 
     def start_game(self): 
         while self._loop:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    self.collision.close_window()
+                    self.video.close_window()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_q:
-                        self.collision.close_window()
+                        self.video.close_window()
                     if event.key == pygame.K_UP:
                         if not (self.x2 == 0 and self.y2 == 1):
                             self.x2 = 0
@@ -78,10 +78,10 @@ class Director:
                 
             constants.display.fill(constants.background)
 
-            self.collision.execute()
+            self.video.draw_board()
 
-            self._cycle1.draw()
-            self._cycle2.draw()
+            self._cycle1.draw_trail()
+            self._cycle2.draw_trail()
 
             self._cycle1.move_cycle(self.x1, self.y1)
             self._cycle2.move_cycle(self.x2, self.y2)
