@@ -1,6 +1,5 @@
 
 import pygame
-import sys
 import constants
 from game.services.video_service import VideoService
 

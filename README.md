@@ -54,6 +54,7 @@ root                    (project root folder)
 --- 
 * WASD Keys for Player 1 (green)
 * Arrow Keys for Player 2 (blue) 
+* Press "P" to pause the game and "C" to continue playing
 
 ## Authors
 ---
